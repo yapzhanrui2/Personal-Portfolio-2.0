@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    background-color: #0a192f;
+  }
+
+  body {
+    @apply bg-[#0a192f] text-neutral-600;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: #0a192f;
+  }
+
+  * {
+    @apply border-neutral-700;
+  }
+}
+
+@layer utilities {
+  .bg-main {
+    @apply bg-[#0a192f];
+  }
+}
+
+@layer components {
+  .heading-1 {
+    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-neutral-300;
+  }
+
+  .heading-2 {
+    @apply scroll-m-20 pb-2 text-3xl font-semibold tracking-tight text-neutral-300 transition-colors first:mt-0;
+  }
+
+  .heading-3 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight text-neutral-300;
+  }
+
+  .heading-4 {
+    @apply scroll-m-20 text-lg font-semibold tracking-tight text-neutral-300;
+  }
+
+  .body-large {
+    @apply text-lg leading-7 text-neutral-600;
+  }
+
+  .body {
+    @apply leading-7 text-neutral-600;
+  }
+
+  .body-small {
+    @apply text-sm leading-7 text-neutral-600;
+  }
+
+  .link {
+    @apply font-medium text-accent underline underline-offset-4 hover:text-accent-light;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors 
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent
+           disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply bg-transparent text-accent hover:text-accent-light border border-accent 
+           hover:border-accent-light hover:bg-accent/10;
+  }
+
+  .btn-secondary {
+    @apply bg-neutral-800 text-neutral-300 hover:bg-neutral-700
+           border border-neutral-700 hover:border-neutral-600;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-neutral-800 hover:text-neutral-300;
+  }
+}
+
+::selection {
+  @apply bg-accent/30;
+}
+
+:focus-visible {
+  @apply outline-none ring-2 ring-accent;
+} 

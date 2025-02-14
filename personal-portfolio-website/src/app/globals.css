@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* System background colors */
+    --background-light: #ffffff;
+    --background-dark: #000000;
+    
+    /* System text colors */
+    --text-primary-light: #000000;
+    --text-primary-dark: #ffffff;
+    --text-secondary-light: #6b7280;
+    --text-secondary-dark: #9ca3af;
+  }
+
+  body {
+    @apply bg-white dark:bg-neutral-950 text-neutral-900 dark:text-white;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Modern scroll bar styling */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-200 dark:bg-neutral-800 rounded-full;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-white dark:ring-offset-neutral-950;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-accent/20 text-neutral-900 dark:text-white;
+  }
+}
+
+@layer components {
+  /* Container styles */
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  /* Button base styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-sm px-4 py-2 text-sm font-medium transition-colors
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-transparent text-accent hover:text-accent-light border-2 border-accent
+           dark:bg-transparent dark:text-accent
+           hover:-translate-x-2 hover:-translate-y-2
+           hover:shadow-[4px_4px_0_0_rgba(100,255,218,1)]
+           transition-all duration-300 ease-out
+           transform-gpu; /* Hardware acceleration */
+  }
+
+  .btn-secondary {
+    @apply btn bg-neutral-100 text-neutral-900 hover:bg-neutral-200
+           dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700;
+  }
+
+  /* Section styles */
+  .section {
+    @apply py-16 sm:py-24;
+  }
+
+  /* Card styles */
+  .card {
+    @apply rounded-2xl bg-white p-6 shadow-lg dark:bg-neutral-900;
+  }
+
+  /* Typography styles */
+  .heading-1 {
+    @apply font-display text-4xl font-bold sm:text-5xl md:text-6xl tracking-tight;
+  }
+
+  .heading-2 {
+    @apply font-display text-3xl font-bold sm:text-4xl tracking-tight;
+  }
+
+  .heading-3 {
+    @apply font-display text-2xl font-bold sm:text-3xl tracking-tight;
+  }
+
+  .body-large {
+    @apply text-lg leading-relaxed;
+  }
+
+  .body {
+    @apply text-base leading-relaxed;
+  }
+
+  .body-small {
+    @apply text-sm leading-relaxed;
+  }
+}
+
+@layer utilities {
+  /* Glass effect utility */
+  .glass {
+    @apply bg-white/80 dark:bg-neutral-900/80 backdrop-blur-lg;
+  }
+
+  /* Text balance utility */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Grid auto-fit utility */
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min-column-width, 16rem)), 1fr));
+  }
+}
