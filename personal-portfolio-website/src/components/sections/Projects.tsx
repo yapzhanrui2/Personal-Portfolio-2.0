@@ -3,47 +3,55 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-const featuredProjects = [
+interface FeaturedProject {
+  title: string;
+  description: string;
+  image: string;
+  tech: string[];
+  github: string;
+  external?: string;
+}
+
+interface OtherProject {
+  title: string;
+  description: string;
+  tech: string[];
+  github: string;
+  external?: string;
+}
+
+const featuredProjects: FeaturedProject[] = [
   {
-    title: 'Project Name 1',
-    description: 'A detailed description of your project. Explain what it does, what problem it solves, and any notable features or achievements.',
+    title: 'Coffee Bean E-Commerce Website',
+    description: 'A React and Node.js online store with secure checkout, product catalog, order mangement and user authentication. Built for seamless user experience and scalability.',
     image: '/projects/project1.webp',
-    tech: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
-    github: 'https://github.com/yourusername/project1',
-    external: 'https://project1-demo.com',
+    tech: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'AWS S3/RDS'],
+    github: 'https://github.com/yapzhanrui2/E-Commerce-Website',
+    external: 'https://coffeebeanfrontend.vercel.app/',
   },
   {
-    title: 'Project Name 2',
-    description: 'Another detailed project description. Make it compelling and highlight the key aspects that make this project special.',
+    title: 'Personal Portfolio Website v1',
+    description: 'A simple portfolio built with Next.js and Tailwind CSS, featuring smooth Framer Motion animations and responsive design to showcase my projects and skills.',
     image: '/projects/project2.webp',
-    tech: ['Next.js', 'TailwindCSS', 'Prisma', 'PostgreSQL'],
-    github: 'https://github.com/yourusername/project2',
-    external: 'https://project2-demo.com',
+    tech: ['Next.js', 'TailwindCSS', 'React', 'Netlify'],
+    github: 'https://github.com/yapzhanrui2/PersonalWebsite',
+    external: 'https://zhanrui-yap.netlify.app/',
   },
   // Add more featured projects as needed
 ];
 
-const otherProjects = [
+const otherProjects: OtherProject[] = [
   {
-    title: 'Project Name 3',
-    description: 'A brief description of the project that explains its main features and technologies used.',
-    tech: ['React', 'Firebase', 'Tailwind'],
-    github: 'https://github.com/yourusername/project3',
-    external: 'https://project3-demo.com',
+    title: 'DevOps Focused Hello World',
+    description: 'A React + Node.js project demonstrating CI/CD pipelines, Docker containerization, and automated testing (Vitest/Jest) via GitHub Actions. Simplify scalable deployment workflows for modern apps.',
+    tech: ['Github Actions', 'Docker', 'CI/CD', 'Jest'],
+    github: 'https://github.com/yapzhanrui2/DevOps-Deployment',
   },
   {
-    title: 'Project Name 4',
-    description: 'Another interesting project description highlighting key features and implementation details.',
-    tech: ['Vue.js', 'Express', 'MongoDB'],
-    github: 'https://github.com/yourusername/project4',
-    external: 'https://project4-demo.com',
-  },
-  {
-    title: 'Project Name 5',
-    description: 'A concise description of what makes this project special and what problems it solves.',
-    tech: ['Next.js', 'GraphQL', 'PostgreSQL'],
-    github: 'https://github.com/yourusername/project5',
-    external: 'https://project5-demo.com',
+    title: 'Ticket Management System',
+    description: 'A Blazor Server (.NET) ticket management system with Azure AD B2C authentication, MongoDB integration, and role-based access. Streamlines support workflows with secure, real-time ticket handling and a Bootstrap-powered UI.',
+    tech: ['C#', '.NET', 'MongoDB', 'Blazor', 'Microsoft Azure'],
+    github: 'https://github.com/yapzhanrui2/SuggestionApp',
   },
   // Add more projects as needed
 ];
@@ -123,22 +131,24 @@ export default function Projects() {
                         />
                       </svg>
                     </a>
-                    <a
-                      href={project.external}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-neutral-600 hover:text-accent transition-all duration-300 ease-out hover:-translate-y-1"
-                      aria-label={`Visit ${project.title} website`}
-                    >
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
-                    </a>
+                    {project.external && (
+                      <a
+                        href={project.external}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-neutral-600 hover:text-accent transition-all duration-300 ease-out hover:-translate-y-1"
+                        aria-label={`Visit ${project.title} website`}
+                      >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

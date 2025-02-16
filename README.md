@@ -1,4 +1,4 @@
-# Ray Yap's Portfolio Website
+# Ray Yap's Portfolio Website v2
 
 A modern, responsive portfolio website built with Next.js 14, TypeScript, and Tailwind CSS. Features smooth animations, dark mode, and an interactive cursor effect.
 

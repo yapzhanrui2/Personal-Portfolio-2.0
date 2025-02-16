@@ -23,21 +23,33 @@ export default function Header() {
 
       // Update active section
       const sections = navigation.map(item => item.href.substring(1));
-      const currentSection = sections.find(section => {
+      
+      // Find the section that is currently in view
+      let currentSection = sections[0]; // Default to first section
+      
+      sections.forEach(section => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+          // Consider a section in view if its top is near the top of the viewport
+          // or if we're at the bottom of the page for the last section
+          if (
+            (rect.top <= 100 && rect.bottom >= 100) ||
+            (section === 'contact' && 
+             window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 100)
+          ) {
+            currentSection = section;
+          }
         }
-        return false;
       });
 
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
+      setActiveSection(currentSection);
     };
 
     window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -47,7 +59,14 @@ export default function Header() {
     const targetId = href.substring(1);
     const element = document.getElementById(targetId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
     setIsMobileMenuOpen(false);
   };
@@ -92,7 +111,8 @@ export default function Header() {
           <div className="hidden md:block">
             <a
               href="/resume.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary"
             >
               Resume

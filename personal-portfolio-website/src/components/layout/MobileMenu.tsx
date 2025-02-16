@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
 interface MobileMenuProps {
@@ -10,15 +10,51 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, setIsOpen, navigation }: MobileMenuProps) {
+  // Proper body scroll lock with scrollbar compensation
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+    
+    if (isOpen) {
+      const scrollbarWidth = window.innerWidth - html.clientWidth;
+      body.style.overflow = 'hidden';
+      body.style.paddingRight = `${scrollbarWidth}px`;
+      html.style.overflow = 'hidden';
+    } else {
+      body.style.overflow = 'auto';
+      body.style.paddingRight = '0';
+      html.style.overflow = 'auto';
+    }
+    
+    return () => {
+      body.style.overflow = 'auto';
+      body.style.paddingRight = '0';
+      html.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
   // Smooth scroll handler
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const targetId = href.substring(1);
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
     setIsOpen(false);
+    
+    // Wait for menu animation to complete before scrolling
+    setTimeout(() => {
+      const targetId = href.substring(1);
+      const element = document.getElementById(targetId);
+      if (element) {
+        // Calculate offset for header height
+        const offset = 96; // Match your header height (h-16 sm:h-20 = 64px/80px)
+        const bodyTop = document.body.getBoundingClientRect().top;
+        const elementTop = element.getBoundingClientRect().top;
+        const offsetPosition = elementTop - bodyTop - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 300); // Matches the menu close transition duration
   };
 
   return (
@@ -65,7 +101,8 @@ export default function MobileMenu({ isOpen, setIsOpen, navigation }: MobileMenu
                   <div className="mt-8">
                     <a
                       href="/resume.pdf"
-                      download
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="btn-primary w-full justify-center"
                     >
                       Resume

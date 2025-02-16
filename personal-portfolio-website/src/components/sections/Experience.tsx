@@ -2,30 +2,42 @@
 
 import { motion } from 'framer-motion';
 
-const experiences = [
+interface Experience {
+  title: string;
+  company: string;
+  companyUrl: string;
+  location: string;
+  period: string;
+  description: string[];
+  technologies: string[];
+}
+
+const experiences: Experience[] = [
   {
-    title: 'Software Developer',
-    company: 'Company Name',
-    location: 'Location',
-    period: 'Jan 2023 - Present',
+    title: 'Freelance AI Trainer',
+    company: 'Outlier',
+    companyUrl: 'https://www.outlier.ai',
+    location: 'Remote',
+    period: 'Sep 2024 - Present',
     description: [
-      'Led the development of feature X resulting in Y% improvement in Z',
-      'Collaborated with cross-functional teams to implement new features',
-      'Mentored junior developers and conducted code reviews',
+      'Assessed and ranked AI-generated code across multiple programming languages, providing critical feedback to improve model accuracy and performance.',
+      'Developed and answered complex computer science questions to enhance the training of AI models, ensuring comprehensive coverage of key topics.',
+      'Authored detailed reports on AI model performance, highlighting areas for improvement and recommending actionable solutions.',
     ],
-    technologies: ['React', 'TypeScript', 'Node.js', 'AWS'],
+    technologies: ['Javascript', 'Python', 'Java', 'C++'],
   },
   {
-    title: 'Software Engineer Intern',
-    company: 'Company Name',
-    location: 'Location',
+    title: 'Software Developer Intern',
+    company: 'InflaMed',
+    companyUrl: 'https://inflamed.com.au',
+    location: 'Melbourne',
     period: 'May 2022 - Aug 2022',
     description: [
-      'Developed and maintained web applications using React and Node.js',
-      'Implemented responsive designs and improved user experience',
-      'Participated in agile development processes',
+      'Developed and maintained production code for InflaMed\'s website using Next.js, Tailwind CSS, and TypeScript with RESTful APIs.',
+      'Automated Infrastructure as Code (IAC) using Terraform and deployed to Google Cloud Platform.',
+      'Collaborated effectively in a cross-disciplinary team following Agile teamwork principles.',
     ],
-    technologies: ['React', 'JavaScript', 'CSS', 'Git'],
+    technologies: ['Next.js', 'Typescript', 'CSS', 'Terraform', 'Google Cloud Platform'],
   },
   // Add more experiences as needed
 ];
@@ -42,7 +54,7 @@ export default function Experience() {
         >
           <h2 className="heading-2">Experience</h2>
           <p className="body-large text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-            My professional journey in software development, where I&apos;ve worked on various projects and grown my skills.
+            My professional journey in software development, where I&apos;ve interned at a health tech startup and done some freelance work.
           </p>
         </motion.div>
 
@@ -71,14 +83,23 @@ export default function Experience() {
                           {experience.title}
                         </h3>
                         <div className="text-neutral-600 dark:text-neutral-400">
-                          {experience.company} • {experience.location}
+                          <a 
+                            href={experience.companyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-accent hover:text-accent-light transition-colors relative z-10 hover-underline"
+                          >
+                            {experience.company}
+                          </a>
+                          {' • '}
+                          {experience.location}
                         </div>
                       </div>
 
                       <ul className="space-y-4 text-neutral-600 dark:text-neutral-400">
                         {experience.description.map((item, i) => (
                           <li key={i} className="flex items-start">
-                            <span className="mt-2 mr-4 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-neutral-400" />
+                            <span className="mr-4 mt-2 text-accent">▹</span>
                             <span>{item}</span>
                           </li>
                         ))}
@@ -88,9 +109,7 @@ export default function Experience() {
                         {experience.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium 
-                                     bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400
-                                     group-hover:bg-white dark:group-hover:bg-neutral-800"
+                            className="px-3 py-1 text-sm text-accent border border-accent rounded-full relative z-10"
                           >
                             {tech}
                           </span>
@@ -100,7 +119,7 @@ export default function Experience() {
                   </div>
 
                   {/* Hover border effect */}
-                  <div className="absolute inset-0 rounded-2xl border border-neutral-200 dark:border-neutral-800 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 rounded-2xl border border-neutral-200 dark:border-neutral-800 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                 </div>
               </motion.div>
             ))}

@@ -23,7 +23,7 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:rayyap.dev@gmail.com"
               className="inline-flex items-center justify-center px-8 py-4 text-base font-medium 
                        bg-transparent text-accent hover:text-accent-light border-2 border-accent
                        hover:border-accent-light rounded-sm transition-all duration-300

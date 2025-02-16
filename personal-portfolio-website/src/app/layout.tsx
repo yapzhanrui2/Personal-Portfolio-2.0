@@ -37,7 +37,7 @@ export default function RootLayout({
         </main>
         <footer className="py-6 text-center text-sm text-neutral-600">
           <p>
-            Built by Ray (Zhan Rui) Yap using <span className="text-accent">Next.js</span>  + <span className="text-accent">Tailwind CSS</span>. Design inspired by{' '}
+            Built by <a className="text-accent"href="https://github.com/yapzhanrui2/Personal-Portfolio-2.0" >Ray (Zhan Rui) Yap</a> using <span className="text-accent">Next.js</span>  + <span className="text-accent">Tailwind CSS</span>. Design inspired by{' '}
             <a
               href="https://brittanychiang.com"
               target="_blank"

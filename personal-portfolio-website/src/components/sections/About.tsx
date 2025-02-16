@@ -59,14 +59,14 @@ export default function About() {
             </div>
 
             <p className="body-large text-neutral-600 dark:text-neutral-400">
-              I&apos;m a full-stack developer with a passion for building beautiful, functional, and user-friendly applications. 
-              I specialize in full-stack development with a focus on modern web technologies.
+              Hello! My name is <span className="text-accent">Ray</span>. I am a full-stack developer with a passion for building beautiful, functional, and user-friendly applications. 
+              Being a recent graduate with a background in <span className="text-accent">Computer Science</span> and <span className="text-accent">Information Technology</span>, I am always looking for new and innovative ways to improve my skills and knowledge.
             </p>
 
             <div className="flex gap-5">
               {/* GitHub */}
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/yapzhanrui2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-neutral-600 hover:text-accent transition-all duration-300 ease-out hover:-translate-y-1"
@@ -87,7 +87,7 @@ export default function About() {
 
               {/* LinkedIn */}
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/zryy/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-neutral-600 hover:text-accent transition-all duration-300 ease-out hover:-translate-y-1"
@@ -106,7 +106,7 @@ export default function About() {
 
               {/* Email */}
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:rayyap.dev@gmail.com"
                 className="text-neutral-600 hover:text-accent transition-all duration-300 ease-out hover:-translate-y-1"
                 aria-label="Email Me"
               >

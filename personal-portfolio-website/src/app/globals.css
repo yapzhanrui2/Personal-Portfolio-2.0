@@ -52,6 +52,20 @@
     @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
   }
 
+  /* Hover underline animation */
+  .hover-underline {
+    @apply relative;
+  }
+
+  .hover-underline::after {
+    @apply content-[''] absolute left-0 bottom-0 w-0 h-[1px] bg-current
+           transition-all duration-300 ease-out;
+  }
+
+  .hover-underline:hover::after {
+    @apply w-full;
+  }
+
   /* Button base styles */
   .btn {
     @apply inline-flex items-center justify-center rounded-sm px-4 py-2 text-sm font-medium transition-colors
