@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
 interface MobileMenuProps {
@@ -33,28 +33,45 @@ export default function MobileMenu({ isOpen, setIsOpen, navigation }: MobileMenu
     };
   }, [isOpen]);
 
-  // Smooth scroll handler
+  // Store the target section ID in a React state when a navigation link is clicked
+  const [targetSectionId, setTargetSectionId] = useState<string | null>(null);
+
+  // Use an effect to handle scrolling after the menu is closed
+  useEffect(() => {
+    // Only proceed if the menu is closed AND we have a target section
+    if (!isOpen && targetSectionId) {
+      const timeoutId = setTimeout(() => {
+        const element = document.getElementById(targetSectionId);
+        if (element) {
+          // Calculate offset for header height
+          const offset = 96; // Match your header height
+          
+          // For mobile, use a more reliable scrolling approach
+          const topPosition = window.scrollY + element.getBoundingClientRect().top - offset;
+          
+          window.scrollTo({
+            top: topPosition,
+            behavior: 'smooth'
+          });
+        }
+        
+        // Clear the target after scrolling
+        setTargetSectionId(null);
+      }, 400); // Slightly longer than animation duration for reliability
+      
+      return () => clearTimeout(timeoutId);
+    }
+  }, [isOpen, targetSectionId]);
+
+  // Modified Nav Click handler to use the state approach
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    setIsOpen(false);
+    e.stopPropagation(); // Prevent any event bubbling
     
-    // Wait for menu animation to complete before scrolling
-    setTimeout(() => {
-      const targetId = href.substring(1);
-      const element = document.getElementById(targetId);
-      if (element) {
-        // Calculate offset for header height
-        const offset = 96; // Match your header height (h-16 sm:h-20 = 64px/80px)
-        const bodyTop = document.body.getBoundingClientRect().top;
-        const elementTop = element.getBoundingClientRect().top;
-        const offsetPosition = elementTop - bodyTop - offset;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    }, 300); // Matches the menu close transition duration
+    // Store the target section ID and close the menu
+    const targetId = href.substring(1);
+    setTargetSectionId(targetId);
+    setIsOpen(false);
   };
 
   return (
