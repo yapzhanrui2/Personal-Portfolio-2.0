@@ -14,17 +14,17 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    title: 'Freelance AI Trainer',
-    company: 'Outlier',
-    companyUrl: 'https://www.outlier.ai',
-    location: 'Remote',
-    period: 'Sep 2024 - Present',
+    title: 'Graduate Software Engineer',
+    company: 'NetApp Instaclustr',
+    companyUrl: 'https://www.instaclustr.com/',
+    location: 'Melbourne',
+    period: 'Sep 2025 - Present',
     description: [
-      'Assessed and ranked AI-generated code across multiple programming languages, providing critical feedback to improve model accuracy and performance.',
-      'Developed and answered complex computer science questions to enhance the training of AI models, ensuring comprehensive coverage of key topics.',
-      'Authored detailed reports on AI model performance, highlighting areas for improvement and recommending actionable solutions.',
+      'Contributed to the development and maintenance of a large-scale open-source application platform managing thousands of distributed servers globally',
+      'Participated in team rotations across multiple technology stacks (e.g. Java, Python, TypeScript), accelerating cross-domain knowledge and platform familiarity.',
+      'Improved monitoring, logging and operational visibility to reduce incident response times and enhance system stability.',
     ],
-    technologies: ['Javascript', 'Python', 'Java', 'C++'],
+    technologies: ['Java', 'Python', 'TypeScript', 'AWS'],
   },
   {
     title: 'Software Developer Intern',

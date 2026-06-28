@@ -54,12 +54,12 @@ export default function About() {
                 </h1>
               </div>
               <h2 className="heading-2 text-neutral-600 dark:text-neutral-400">
-                Full Stack Developer
+                Software Engineer
               </h2>
             </div>
 
             <p className="body-large text-neutral-600 dark:text-neutral-400">
-              Hello! My name is <span className="text-accent">Ray</span>. I am a full-stack developer with a passion for building beautiful, functional, and user-friendly applications. 
+              Hello! My name is <span className="text-accent">Ray</span>. I am a software engineer with a passion for building beautiful, functional, and user-friendly applications. 
               Being a recent graduate with a background in <span className="text-accent">Computer Science</span> and <span className="text-accent">Information Technology</span>, I am always looking for new and innovative ways to improve my skills and knowledge.
             </p>
 

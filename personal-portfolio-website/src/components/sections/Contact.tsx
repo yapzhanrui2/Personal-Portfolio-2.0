@@ -14,7 +14,7 @@ export default function Contact() {
         >
           <h2 className="heading-2">Get In Touch</h2>
           <p className="body-large text-neutral-600">
-            I&apos;m currently looking for new opportunities. Feel free to shoot me a message!
+            I&apos;m not currently looking for new opportunities but feel free to shoot me a message!
           </p>
 
           <motion.div
@@ -29,7 +29,7 @@ export default function Contact() {
                        hover:border-accent-light rounded-sm transition-all duration-300
                        hover:-translate-y-1 hover:shadow-[4px_4px_0_0_rgba(100,255,218,1.0)]"
             >
-              Hire Me
+              Contact Me
             </a>
           </motion.div>
         </motion.div>
